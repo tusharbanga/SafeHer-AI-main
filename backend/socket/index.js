@@ -89,10 +89,6 @@ const registerSocketHandlers = (io) => {
   });
 };
 
-/**
- * Broadcasts a new SOS alert to the triggering user's room (any of their
- * connected devices) and to a general "sos-monitor" room for dashboards.
- */
 const broadcastSOSAlert = (io, userId, alertPayload) => {
   io.to(`user:${userId}`).emit("sos:triggered", alertPayload);
   io.to("sos-monitor").emit("sos:new-alert", alertPayload);
