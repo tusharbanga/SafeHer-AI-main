@@ -1,6 +1,15 @@
 const jwt = require("jsonwebtoken");
 const TrackingSession = require("../models/TrackingSession");
 
+/**
+ * Registers all Socket.io event handlers for:
+ *  - Live Location tracking (start/stop/update, room per user)
+ *  - SOS broadcast to a user's own room so any connected device/dashboard
+ *    can react instantly to a new emergency alert.
+ *
+ * Auth: client must connect with `auth: { token }` containing a valid JWT
+ * access token (the same one used for REST requests).
+ */
 const registerSocketHandlers = (io) => {
   io.use((socket, next) => {
     try {
