@@ -20,11 +20,7 @@ const locationIcon = L.divIcon({
   iconAnchor: [22, 22],
 });
 
-/**
- * Live OpenStreetMap view of a single point (the tracked user's current
- * location). Auto-centers and smoothly flies to new coordinates as they
- * arrive — no Google Maps API involved, just the free OSM tile server.
- */
+
 export function LocationMap({ latitude, longitude, accuracy = 0, className, zoom = 17 }: LocationMapProps) {
   const hasLocation = latitude !== null && longitude !== null;
   const center: L.LatLngExpression = hasLocation ? [latitude, longitude] : DEFAULT_CENTER;
