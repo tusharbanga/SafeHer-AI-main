@@ -2,11 +2,6 @@ const admin = require("firebase-admin");
 
 let firebaseApp = null;
 
-/**
- * Lazily initializes the Firebase Admin SDK for Firebase Cloud Messaging (FCM).
- * Returns null (instead of throwing) when credentials are not configured so
- * that the rest of the API keeps working in environments without FCM set up.
- */
 const getFirebaseApp = () => {
   if (firebaseApp) return firebaseApp;
 
