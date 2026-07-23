@@ -1,0 +1,233 @@
+{
+  "info": {
+    "name": "Future Safe Her API",
+    "description": "AI Powered Women Safety Platform — backend API collection.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api/v1" },
+    { "key": "accessToken", "value": "" },
+    { "key": "refreshToken", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Tanishttha Sharma\",\n  \"email\": \"tanishttha@safeher.ai\",\n  \"phone\": \"+919800000011\",\n  \"password\": \"StrongPass123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"tanishttha@safeher.ai\",\n  \"password\": \"StrongPass123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/auth/me"
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "url": "{{baseUrl}}/auth/forgot-password",
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"tanishttha@safeher.ai\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Emergency Contacts",
+      "item": [
+        {
+          "name": "List Contacts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/contacts"
+          }
+        },
+        {
+          "name": "Create Contact",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/contacts",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mom\",\n  \"relationship\": \"Mother\",\n  \"phone\": \"+919800000022\",\n  \"priority\": 0\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SOS",
+      "item": [
+        {
+          "name": "Trigger SOS",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/sos/trigger",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"latitude\": 19.0596,\n  \"longitude\": 72.8295,\n  \"address\": \"Linking Rd, Bandra West, Mumbai\",\n  \"triggerMethod\": \"button\"\n}"
+            }
+          }
+        },
+        {
+          "name": "SOS History",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/sos/history"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Live Tracking",
+      "item": [
+        {
+          "name": "Start Tracking",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/tracking/start",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"startLocation\": { \"latitude\": 19.0596, \"longitude\": 72.8295, \"label\": \"Bandra\" },\n  \"destination\": { \"latitude\": 19.1197, \"longitude\": 72.9051, \"label\": \"Powai\" }\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Active Session",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/tracking/active"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Assistant",
+      "item": [
+        {
+          "name": "Send Message",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/assistant/message",
+            "body": { "mode": "raw", "raw": "{\n  \"message\": \"I feel like someone is following me.\"\n}" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Safe Route",
+      "item": [
+        {
+          "name": "Find Safe Routes",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/safe-route?fromLat=19.0596&fromLng=72.8295&toLat=19.0700&toLng=72.8400&profile=foot"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Nearby",
+      "item": [
+        {
+          "name": "Nearby Police",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/nearby?lat=19.0596&lng=72.8295&category=police&radius=3000"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Heatmap",
+      "item": [
+        {
+          "name": "Unsafe Zones",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/heatmap/zones?lat=19.0596&lng=72.8295&radiusKm=5"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Community",
+      "item": [
+        {
+          "name": "Get Posts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{accessToken}}" }],
+            "url": "{{baseUrl}}/community/posts"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ride Guardian",
+      "item": [
+        {
+          "name": "Start Ride",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{accessToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": "{{baseUrl}}/ride/start",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"provider\": \"Uber\",\n  \"vehicleNumber\": \"MH 12 AB 4421\",\n  \"vehicleModel\": \"Toyota Etios (White)\",\n  \"driver\": { \"name\": \"Rakesh Kumar\", \"rating\": 4.9, \"totalRides\": 1240 },\n  \"pickup\": { \"label\": \"Bandra Station\", \"latitude\": 19.0596, \"longitude\": 72.8295 },\n  \"destination\": { \"label\": \"Powai\", \"latitude\": 19.1197, \"longitude\": 72.9051 }\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
