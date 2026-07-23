@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 
 let memoryServer;
 
-/**
- * Establishes a connection to MongoDB using Mongoose.
- * In development, if no MONGODB_URI is provided, it uses an in-memory MongoDB server
- * so the app can still start locally for testing.
- */
 const connectDB = async () => {
   try {
     mongoose.set("strictQuery", true);
