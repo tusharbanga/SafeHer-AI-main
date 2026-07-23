@@ -1,4 +1,4 @@
-# Future Safe Her — Backend API
+<h1 align='center'> Future Safe Her — Backend API<h1>
 
 Production-ready Node.js / Express / MongoDB backend for **Future Safe Her**, an AI-powered women safety platform. Built to match the existing frontend exactly — no extra pages, no missing features.
 
